@@ -50,4 +50,21 @@ class User extends Authenticatable
     function getRouteKeyName(){
         return 'uuid';
     }
+
+    /**
+     * Get the todo items created by the user.
+     */
+    public function createdTodoItems()
+    {
+        return $this->hasMany(TodoItem::class, 'created_by');
+    }
+
+    /**
+     * Get the todo items assigned to the user.
+     */
+    public function assignedTodoItems()
+    {
+        return $this->hasMany(TodoItem::class, 'assigned_to');
+    }
+
 }
